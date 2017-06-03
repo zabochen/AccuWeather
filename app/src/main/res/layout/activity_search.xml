@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_search_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_search_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/activity_search_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:inputType="text" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/activity_search_button_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_search_text_input_layout"
+            android:layout_marginTop="10dp"
+            android:text="@string/activity_search_button_search_title" />
+
+        <Button
+            android:id="@+id/activity_search_button_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/activity_search_button_add_title" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_search_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/activity_search_button_search"
+            android:layout_margin="20dp"
+            android:scrollbars="vertical" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

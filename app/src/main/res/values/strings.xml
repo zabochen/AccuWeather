@@ -1,3 +1,28 @@
 <resources>
-    <string name="app_name">AccuWeather</string>
+    <string name="app_name">Accu Weather</string>
+
+    <!-- Search Activity -->
+    <string name="activity_search_toolbar_title">Search</string>
+    <string name="activity_search_edit_text_hint">Please, enter the city:</string>
+    <string name="activity_search_button_search_title">Search</string>
+    <string name="activity_search_button_add_title">Save</string>
+
+    <!-- Condition Activity -->
+    <string name="activity_condition_toolbar_title">Condition</string>
+    <string name="activity_condition_button_mobile_link_title">More details on site</string>
+
+    <!-- Snackbar -->
+    <string name="snackbar_message_internet_disable">Oops, something went wrong. Please check your internet connection and try again</string>
+
+    <!-- Alert Dialog -->
+    <string name="alert_dialog_message_delete">This city will be deleted</string>
+    <string name="alert_dialog_button_yes_title">Delete</string>
+    <string name="alert_dialog_button_no_title">Cancel</string>
+
+    <!-- Menu - Main Activity -->
+    <string name="menu_main_activity_item_search">Search</string>
+
+    <!-- Menu - Condition Activity -->
+    <string name="menu_condition_activity_item_delete">Delete</string>
+
 </resources>

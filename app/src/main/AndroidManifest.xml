@@ -3,6 +3,9 @@
     package="ua.ck.zabochen.accuweather"
     android:installLocation="preferExternal">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".MainApp"
         android:allowBackup="true"
@@ -12,10 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- MainActivity -->
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- SearchActivity -->
+        <activity android:name=".activity.SearchActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Condition Activity -->
+        <activity android:name=".activity.ConditionActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

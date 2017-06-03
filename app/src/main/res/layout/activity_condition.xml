@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_condition_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+        <!-- City Name -->
+        <TextView
+            android:id="@+id/activity_condition_city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/app_name"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Weather Icon -->
+        <ImageView
+            android:id="@+id/activity_condition_weather_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/activity_condition_city_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <!-- Weather Text -->
+        <TextView
+            android:id="@+id/activity_condition_weather_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_condition_weather_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/app_name"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Temperature -->
+        <TextView
+            android:id="@+id/activity_condition_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_condition_weather_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/app_name"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- MobileLink -->
+        <Button
+            android:id="@+id/activity_condition_button_mobile_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_condition_temperature"
+            android:layout_marginTop="40dp"
+            android:padding="20dp"
+            android:text="@string/activity_condition_button_mobile_link_title"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

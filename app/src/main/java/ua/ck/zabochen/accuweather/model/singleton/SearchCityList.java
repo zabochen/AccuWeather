@@ -27,10 +27,4 @@ public class SearchCityList {
     public ArrayList<City> getSearchList() {
         return cities;
     }
-
-    public void clearSearchList() {
-        if (cities != null) {
-            cities.clear();
-        }
-    }
 }

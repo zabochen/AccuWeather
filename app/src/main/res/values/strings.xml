@@ -12,7 +12,9 @@
     <string name="activity_condition_button_mobile_link_title">More details on site</string>
 
     <!-- Snackbar -->
-    <string name="snackbar_message_internet_disable">Oops, something went wrong. Please check your internet connection and try again</string>
+    <string name="snackbar_message_internet_disable">Oops, something went wrong. Please, check your internet connection and try again</string>
+    <string name="snackbar_message_city_valid">Please, enter a valid city</string>
+    <string name="snackbar_message_city_save">The result saved</string>
 
     <!-- Alert Dialog -->
     <string name="alert_dialog_message_delete">This city will be deleted</string>

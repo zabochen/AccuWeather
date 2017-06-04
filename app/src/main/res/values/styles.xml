@@ -6,6 +6,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Button -->
+    <style name="AppTheme.Button" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/button_highlight</item>
+        <item name="colorButtonNormal">@color/button_normal</item>
+        <item name="android:textSize">@dimen/button_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">@dimen/button_padding</item>
+    </style>
+
+    <!-- CardView -->
     <style name="AppTheme.CardView" parent="CardView">
         <item name="android:layout_marginTop">@dimen/margin_normal</item>
         <item name="android:layout_marginBottom">@dimen/margin_normal</item>
@@ -17,6 +28,12 @@
         <item name="cardCornerRadius">@dimen/margin_small</item>
         <item name="cardPreventCornerOverlap">false</item>
         <item name="cardBackgroundColor">@android:color/white</item>
+    </style>
+
+    <!-- Normal Margin -->
+    <style name="AppTheme.NormalMargin">
+        <item name="android:layout_marginLeft">@dimen/margin_normal</item>
+        <item name="android:layout_marginRight">@dimen/margin_normal</item>
     </style>
 
 </resources>

@@ -11,7 +11,6 @@ import ua.ck.zabochen.accuweather.R;
 import ua.ck.zabochen.accuweather.event.AdapterClick;
 import ua.ck.zabochen.accuweather.model.singleton.MainCityList;
 
-
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
 
     private static final String TAG = MainAdapter.class.getSimpleName();
@@ -36,10 +35,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         holder.countryRegionName.setText(MainCityList.getInstance().getMainList().get(position).getCountryName()
                 + ", " + MainCityList.getInstance().getMainList().get(position).getRegionName());
 
+        // Set CardView ClickListener
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.getAdapterClickPosition(position);
+                mActivity.adapterClickPosition(position);
             }
         });
     }
@@ -66,5 +66,4 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
             cardView = (CardView) itemView.findViewById(R.id.adapter_main_card_view);
         }
     }
-
 }

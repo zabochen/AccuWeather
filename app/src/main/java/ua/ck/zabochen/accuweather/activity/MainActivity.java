@@ -31,18 +31,19 @@ public class MainActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadData();
+        loadLocalData();
         setUi();
     }
 
-    private void loadData() {
-        int databaseSize = Database.getInstance().getCities().size();
-        if (databaseSize > 0) {
+    private void loadLocalData() {
+        if (Database.getInstance().getCities().size() > 0) {
             RealmResults<City> cities = Database.getInstance().getCities();
             MainCityList.getInstance().getMainList().clear();
             for (City c : cities) {
                 MainCityList.getInstance().addToMainList(c);
             }
+        } else {
+            MainCityList.getInstance().getMainList().clear();
         }
     }
 
@@ -55,7 +56,6 @@ public class MainActivity extends BaseActivity
 
         // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
-        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
         toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.toolbar_title));
         setSupportActionBar(toolbar);
 
@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity
     protected void onResume() {
         super.onResume();
         // Refresh data & recyclerView
-        loadData();
+        loadLocalData();
         mRecyclerView.setAdapter(new MainAdapter(this));
     }
 
@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity
     }
 
     @Override
-    public void getAdapterClickPosition(int position) {
+    public void adapterClickPosition(int position) {
         if (Utils.isOnline(this)) {
             Intent intent = new Intent(this, ConditionActivity.class);
             intent.putExtra("position", position);
@@ -113,6 +113,5 @@ public class MainActivity extends BaseActivity
                     Snackbar.LENGTH_LONG)
                     .show();
         }
-
     }
 }

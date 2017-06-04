@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -29,19 +30,20 @@ public class ConditionActivity extends BaseActivity
         implements View.OnClickListener, Completed {
 
     private int position;
+    private String mobileLink;
 
-    private TextView mCityName;
-    private TextView mWeatherText;
-    private TextView mTemperature;
-    private ImageView mWeatherIcon;
-    private String mMobileLink;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Selected item
+        // Selected item from MainAdapter/MainActivity
+        // Intent key - "position"
         this.position = getIntent().getIntExtra("position", 0);
+
+        // UI
+        setUi();
 
         // Network Request
         Network.getInstance().requestCondition(this, MainCityList.getInstance().getMainList().get(position).getKey());
@@ -57,17 +59,8 @@ public class ConditionActivity extends BaseActivity
         toolbar.setTitle(R.string.activity_condition_toolbar_title);
         setSupportActionBar(toolbar);
 
-        // TextView Find
-        mCityName = (TextView) findViewById(R.id.activity_condition_city_name);
-        mWeatherText = (TextView) findViewById(R.id.activity_condition_weather_text);
-        mTemperature = (TextView) findViewById(R.id.activity_condition_temperature);
-
-        // ImageView
-        mWeatherIcon = (ImageView) findViewById(R.id.activity_condition_weather_icon);
-
-        // Button
-        Button mobileLink = (Button) findViewById(R.id.activity_condition_button_mobile_link);
-        mobileLink.setOnClickListener(this);
+        // ProgressBar
+        mProgressBar = (ProgressBar) findViewById(R.id.activity_condition_progress_bar);
     }
 
     @Override
@@ -114,7 +107,7 @@ public class ConditionActivity extends BaseActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_condition_button_mobile_link:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mMobileLink));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mobileLink));
                 startActivity(intent);
                 break;
             default:
@@ -124,9 +117,25 @@ public class ConditionActivity extends BaseActivity
 
     @Override
     public void updateUi() {
-        setUi();
+        // TextView's
+        TextView cityName = (TextView) findViewById(R.id.activity_condition_city_name);
+        cityName.setText(MainCityList.getInstance().getMainList().get(position).getCityName());
 
-        mCityName.setText(MainCityList.getInstance().getMainList().get(position).getCityName());
+        TextView countryRegionName = (TextView) findViewById(R.id.activity_condition_country_region_name);
+        countryRegionName.setText(MainCityList.getInstance().getMainList().get(position).getCountryName()
+                + ", " + MainCityList.getInstance().getMainList().get(position).getRegionName());
+
+        TextView weatherText = (TextView) findViewById(R.id.activity_condition_weather_text);
+        weatherText.setText(ConditionCity.getInstance().getCondition().getWeatherText());
+
+        TextView temperature = (TextView) findViewById(R.id.activity_condition_temperature);
+        temperature.setText(String.valueOf(ConditionCity.getInstance().getCondition().getTemperature().getMetric().getValue()
+                + " " + ConditionCity.getInstance().getCondition().getTemperature().getMetric().getUnit()
+                + " / " + ConditionCity.getInstance().getCondition().getTemperature().getImperial().getValue()
+                + " " + ConditionCity.getInstance().getCondition().getTemperature().getImperial().getUnit()));
+
+        // ImageView
+        ImageView weatherIcon = (ImageView) findViewById(R.id.activity_condition_weather_icon);
 
         String imageUrl;
         if (ConditionCity.getInstance().getCondition().getWeatherIcon() < 10) {
@@ -137,14 +146,15 @@ public class ConditionActivity extends BaseActivity
                     + ConditionCity.getInstance().getCondition().getWeatherIcon() + "-s.png";
         }
 
-        Picasso
-                .with(this)
-                .load(imageUrl)
-                .into(mWeatherIcon);
+        Picasso.with(this).load(imageUrl).into(weatherIcon);
 
-        mWeatherText.setText(ConditionCity.getInstance().getCondition().getWeatherText());
-        mTemperature.setText(String.valueOf(ConditionCity.getInstance().getCondition().getTemperature().getMetric().getValue()));
-        mMobileLink = ConditionCity.getInstance().getCondition().getMobileLink();
+        // Button
+        mobileLink = ConditionCity.getInstance().getCondition().getMobileLink();
+        Button mobileLink = (Button) findViewById(R.id.activity_condition_button_mobile_link);
+        mobileLink.setOnClickListener(this);
+
+        // Hide ProgressBar
+        mProgressBar.setVisibility(View.GONE);
     }
 
 }

@@ -39,6 +39,7 @@ public class Network {
 
     public void requestLocation(final Completed activity, String city) {
 
+        // Request URL
         String cityLocation = API.URL + "locations/v1/search?q=" + city + "&apikey=" + API.KEY;
 
         final OkHttpClient okHttpClient = new OkHttpClient();
@@ -55,6 +56,7 @@ public class Network {
                 .map(new Function<Response, Location[]>() {
                     @Override
                     public Location[] apply(@NonNull Response response) throws Exception {
+                        // Jackson Mapper
                         return new ObjectMapper().readValue(response.body().byteStream(), Location[].class);
                     }
                 })
@@ -63,8 +65,8 @@ public class Network {
                     @Override
                     public void accept(@NonNull Location[] location) throws Exception {
 
+                        // Clear SearchList & Update UI
                         SearchCityList.getInstance().getSearchList().clear();
-
                         activity.updateUi();
 
                         for (int i = 0; i < location.length; i++) {
@@ -73,10 +75,11 @@ public class Network {
                             city.setCityName(location[i].getEnglishName());
                             city.setCountryName(location[i].getCountry().getEnglishName());
                             city.setRegionName(location[i].getRegion().getEnglishName());
-
+                            // Fill SearchList
                             SearchCityList.getInstance().addToSearchList(city);
                         }
 
+                        // Update UI
                         activity.updateUi();
                     }
                 });
@@ -84,6 +87,7 @@ public class Network {
 
     public void requestCondition(final Completed activity, String key) {
 
+        // Request URL
         String cityCondition = API.URL + "currentconditions/v1/" + key + ".json?apikey=" + API.KEY;
 
         final OkHttpClient okHttpClient = new OkHttpClient();
@@ -100,6 +104,7 @@ public class Network {
                 .map(new Function<Response, Condition[]>() {
                     @Override
                     public Condition[] apply(@NonNull Response response) throws Exception {
+                        // Jackson Mapper
                         return new ObjectMapper().readValue(response.body().byteStream(), Condition[].class);
                     }
                 })
@@ -107,11 +112,11 @@ public class Network {
                 .subscribe(new Consumer<Condition[]>() {
                     @Override
                     public void accept(@NonNull Condition[] condition) throws Exception {
+                        // Fill ConditionCity & Update UI
                         ConditionCity.getInstance().setCondition(condition[0]);
                         activity.updateUi();
                     }
                 });
     }
-
 
 }

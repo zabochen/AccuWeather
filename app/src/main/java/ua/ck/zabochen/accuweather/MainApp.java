@@ -13,7 +13,6 @@ public class MainApp extends Application {
         setRealm();
     }
 
-
     private void setRealm() {
         Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
@@ -22,5 +21,4 @@ public class MainApp extends Application {
                 .build();
         Realm.setDefaultConfiguration(realmConfiguration);
     }
-
 }

@@ -8,4 +8,8 @@
     <dimen name="margin_normal">8dp</dimen>
     <dimen name="margin_large">16dp</dimen>
 
+    <!-- Button -->
+    <dimen name="button_title">16sp</dimen>
+    <dimen name="button_padding">10dp</dimen>
+
 </resources>

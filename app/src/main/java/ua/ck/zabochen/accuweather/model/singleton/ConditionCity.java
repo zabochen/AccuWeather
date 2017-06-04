@@ -5,7 +5,7 @@ import ua.ck.zabochen.accuweather.model.jackson.condition.Condition;
 public class ConditionCity {
 
     private static ConditionCity conditionCity;
-    private static Condition condition;
+    private Condition condition;
 
     private ConditionCity() {
     }
@@ -24,5 +24,4 @@ public class ConditionCity {
     public Condition getCondition() {
         return condition;
     }
-
 }

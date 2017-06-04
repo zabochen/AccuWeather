@@ -7,4 +7,8 @@
     <!-- Toolbar -->
     <color name="toolbar_title">#FFFFFF</color>
 
+    <!-- Button -->
+    <color name="button_normal">#009688</color>
+    <color name="button_highlight">#00796B</color>
+
 </resources>

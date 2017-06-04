@@ -6,7 +6,6 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import ua.ck.zabochen.accuweather.model.realm.City;
 
-
 public class Database {
 
     private static Database database;
@@ -27,20 +26,8 @@ public class Database {
         return realm;
     }
 
-    public void clearAll() {
-        realm.beginTransaction();
-        realm.delete(City.class);
-        realm.commitTransaction();
-    }
-
     public RealmResults<City> getCities() {
         return realm.where(City.class).findAll();
-    }
-
-    public void addCity(City city) {
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(city);
-        realm.beginTransaction();
     }
 
     public void addCities(ArrayList<City> cityList) {
@@ -63,8 +50,5 @@ public class Database {
                 city.deleteAllFromRealm();
             }
         });
-
     }
-
-
 }
